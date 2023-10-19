@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: mfitestwork
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        #        jdbc:
+        #          batch_size: 100
+        query:
+          in_clause_parameter_padding: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    generate-ddl: false
+  datasource:
+    name: mfitestwork_test
+    url: jdbc:h2:mem:mfitestwork_test
+    username: h2
+    password: 123456
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+
+  flyway:
+    baseline-on-migrate: true
+    out-of-order: true
+
+logging:
+  level:
+    ROOT: info
+    org.springframework.web.reactive.function.client.ExchangeFunctions: trace
+    org.hibernate.SQL: info
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+    springfox.documentation.schema.property.CachingModelPropertiesProvider: error
+    #    io.r2dbc.postgresql.QUERY: DEBUG # for queries
+    #    io.r2dbc.postgresql.PARAM: DEBUG # for parameters
+    org.springframework.r2dbc: INFO
+    #    reactor.netty: debug
+    reactor.netty.http.client: INFO
+    org.springframework.orm.jpa: info
+    org.springframework.transaction: info
